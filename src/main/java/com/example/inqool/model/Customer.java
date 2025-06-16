@@ -1,7 +1,6 @@
 package com.example.inqool.model;
 
 import jakarta.persistence.*;
-
 import jdk.jfr.Name;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,16 +13,23 @@ import java.util.Set;
 @NoArgsConstructor
 
 @Entity
-public class Court {
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Name("court_id")
+    @Name("customer_id")
     private Long id;
 
     @Column
-    private double cost;
+    private String phone;
 
-    @OneToMany(mappedBy = "court")
+    @Column
+    private String firstName;
+
+    @Column
+    private String lastName;
+
+    @OneToMany(mappedBy = "owner")
     private Set<Reservation> reservationSet;
+
 }

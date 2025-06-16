@@ -16,25 +16,24 @@ public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="RESERVATION_ID")
-    private  Long id;
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name="COURT_ID")
+    @JoinColumn(name = "court_id")
     private Court court;
 
-    @OneToOne
-    @JoinColumn(name="USER_PHONE")
-    private String phone;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer owner;
 
     @Column
     private double cost;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp start;
+    private Timestamp reservationStart;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp end;
+    private Timestamp reservationEnd;
 
     @Enumerated
     private GameType gameType;

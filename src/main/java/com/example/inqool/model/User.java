@@ -1,4 +1,4 @@
-package com.example.inqool.model;
+package com.example.inqool.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

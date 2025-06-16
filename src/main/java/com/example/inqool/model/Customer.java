@@ -1,11 +1,12 @@
 package com.example.inqool.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import jdk.jfr.Name;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -17,7 +18,6 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Name("customer_id")
     private Long id;
 
     @Column
@@ -30,6 +30,8 @@ public class Customer {
     private String lastName;
 
     @OneToMany(mappedBy = "owner")
-    private Set<Reservation> reservationSet;
+    @JsonManagedReference
+    @ElementCollection
+    private Set<Reservation> customerReservations;
 
 }

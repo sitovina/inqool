@@ -2,11 +2,11 @@ package com.example.inqool.model;
 
 import jakarta.persistence.*;
 
-import jdk.jfr.Name;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -18,12 +18,12 @@ public class Court {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Name("court_id")
     private Long id;
 
     @Column
     private double cost;
 
-    @OneToMany(mappedBy = "court")
-    private Set<Reservation> reservationSet;
+    @OneToMany(mappedBy = "reservationCourt")
+    @ElementCollection
+    private Set<Reservation> courtReservations;
 }

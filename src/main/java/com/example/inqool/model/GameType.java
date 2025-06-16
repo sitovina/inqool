@@ -1,4 +1,4 @@
-package com.example.inqool.model.entity;
+package com.example.inqool.model;
 
 public enum GameType {
     DOUBLEGAME,

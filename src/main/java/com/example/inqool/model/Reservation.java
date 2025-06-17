@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -33,13 +33,13 @@ public class Reservation {
     private double cost;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp creation;
+    private Date creation;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp reservationStart;
+    private Date reservationStart;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp reservationEnd;
+    private Date reservationEnd;
 
     @Enumerated
     private GameType gameType;

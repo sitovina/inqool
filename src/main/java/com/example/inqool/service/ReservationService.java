@@ -5,8 +5,10 @@ import com.example.inqool.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class ReservationService {
@@ -26,8 +28,12 @@ public class ReservationService {
         return reservationRepository.findById(id);
     }
 
-    public Reservation createReservation(Reservation court) {
-        return reservationRepository.save(court);
+    public Reservation createReservation(Reservation reservation) {
+        return reservationRepository.save(reservation);
+    }
+
+    public Set<Reservation> findOverlappingReservations(Date reservationStart , Date reservationEnd){
+        return reservationRepository.findAllByReservationStartAfterAndReservationEndBefore(reservationStart, reservationEnd);
     }
 
     public void deleteCourt(Long id) {

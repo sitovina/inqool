@@ -1,12 +1,15 @@
 package com.example.inqool.service;
 
 import com.example.inqool.model.Customer;
+import com.example.inqool.model.Reservation;
 import com.example.inqool.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class CustomerService {
@@ -18,12 +21,8 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    public List<Customer> getAllCourts() {
-        return customerRepository.findAll();
-    }
-
-    public Optional<Customer> getCourtById(Long id) {
-        return customerRepository.findById(id);
+    public Optional<Set<Reservation>> getCustomerReservationsByPhone(String phone, Date date) {
+        return Optional.ofNullable(customerRepository.findByPhoneAndCustomerReservationsReservationStartAfter(phone, date));
     }
 
     public Optional<Customer> getCustomerByPhone(String phone) {

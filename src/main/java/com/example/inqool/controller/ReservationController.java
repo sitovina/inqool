@@ -9,6 +9,7 @@ import com.example.inqool.service.CustomerService;
 import com.example.inqool.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,7 +54,7 @@ public class ReservationController {
         return customer.getCustomerReservations();
     }
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Reservation> createReservation(@RequestBody Reservation reservation) {
 
         reservationService.findOverlappingReservations(reservation.getReservationStart(), reservation.getReservationEnd());

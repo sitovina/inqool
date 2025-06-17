@@ -46,6 +46,8 @@ public class ReservationControllerMVCTest {
     @Test
     public void testPostReservationCreation() throws Exception {
 
+        fail("servlet does not seem to accept any requests");
+
         String jsonString = "{\"reservationStart\": \"2020-08-21 00:10:00\",\"reservationEnd\":\"2020-08-21 00:30:00\",\"gameType\": 0,\"reservationCourt\": 1,\"owner\": 2}";
 
         mvc.perform(post("/api/reservations")
@@ -53,6 +55,8 @@ public class ReservationControllerMVCTest {
                         .content(jsonString)
                 )
                 .andExpect(status().isOk());
+
+
 
     }
 }

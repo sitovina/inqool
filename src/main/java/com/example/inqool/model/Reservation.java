@@ -33,6 +33,9 @@ public class Reservation {
     private double cost;
 
     @Temporal(TemporalType.TIMESTAMP)
+    private Timestamp creation;
+
+    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp reservationStart;
 
     @Temporal(TemporalType.TIMESTAMP)

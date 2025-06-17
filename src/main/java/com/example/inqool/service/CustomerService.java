@@ -26,6 +26,10 @@ public class CustomerService {
         return customerRepository.findById(id);
     }
 
+    public Optional<Customer> getCustomerByPhone(String phone) {
+        return Optional.ofNullable(customerRepository.findByPhone(phone));
+    }
+
     public Customer createCustomer(Customer court) {
         return customerRepository.save(court);
     }
